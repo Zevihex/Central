@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const conditions = [];
       const sort = document.getElementById("achievementFilter").value;
       const orderBy = (sort === "asc" || sort === "desc")
-        ? `ORDER BY achievement_num ${sort.toUpperCase()}`
-        : "";
+        ? `ORDER BY achievement_num ${sort.toUpperCase()}, series, game`
+        : "ORDER BY series, game";
 
       filters.forEach(({ id, column }) => {
         const value = document.getElementById(id).value;
@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const where = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
       const query = `
         SELECT series AS Series, game AS Game, platform AS Platform, achievement_num AS Achievements,
-          system AS System, developer AS Developer FROM achievements ${where} ${orderBy}`;
+          system AS System, developer AS Developer FROM achievements ${where}${orderBy}`;
+      console.log(query);
       const result = db.exec(query);
       renderTable(result, "achievement-output");
     }

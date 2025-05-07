@@ -17,28 +17,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     filters.forEach(({id, column}) => createDropdownOptions(db, id, column, 1));
 
     function renderSpeedruns() {
-      const conditions = [];
+      const whereConditions = [];
       const orderConditions = [];
       const prSort = document.getElementById("prSortFilter").value;
       const rankSort = document.getElementById("rankSortFilter").value;
       const positionSort = document.getElementById("positionSortFilter").value;
-      let orderBy = "";
 
       if (prSort === "asc" || prSort === "desc") orderConditions.push(`pr_total_ms ${prSort.toUpperCase()}`);
       if (rankSort === "asc" || rankSort === "desc") orderConditions.push(`rank_weight ${rankSort.toUpperCase()}`);
-      if (positionSort === "asc" || positionSort === "desc") orderConditions.push(`rank_weight ${positionSort.toUpperCase()}`);
-      if (orderConditions.length > 0) orderBy = "ORDER BY " + orderConditions.join(", ");
+      if (positionSort === "asc" || positionSort === "desc") orderConditions.push(`position ${positionSort.toUpperCase()}`);
+      orderConditions.push("series");
+      orderConditions.push("game");
 
       filters.forEach(({ id, column }) => {
         const value = document.getElementById(id).value;
         if (value !== "All") {
-          conditions.push(`${column} = '${value}'`);
+          whereConditions.push(`${column} = '${value}'`);
         }
       });
 
-      const where = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
+      const where = whereConditions.length > 0 ? `WHERE ${whereConditions.join(" AND ")}` : "";
+      const orderBy = "ORDER BY " + orderConditions.join(", ");
       const query = `SELECT series AS Series, game AS Game, track AS Track, category AS Category, pr AS PR, 
-      rank AS Rank, position AS Position, date AS Date, video AS Video FROM records ${where} ${orderBy}`;
+      rank AS Rank, position AS Position, date AS Date, video AS Video FROM records ${where}${orderBy}`;
       const result = db.exec(query);
       renderTable(result, "output");
     }
