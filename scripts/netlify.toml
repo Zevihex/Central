@@ -1,0 +1,7 @@
+[build]
+  publish = "./"
+
+[[headers]]
+  for = "/database/*.db"
+  [headers.values]
+    Content-Type = "application/octet-stream"

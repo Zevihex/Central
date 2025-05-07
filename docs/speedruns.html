@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedruns Page</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxanium" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="./news.html">News</a>
+      <a href="./media.html">Media</a>
+      <a href="#" class="active">Speedruns</a>
+      <a href="./achievements.html">Achievements</a>
+    </nav>
+  </header>
+  <div id="filter-container">
+    <div class="filter-group">
+      <label for="seriesFilter">Series</label>
+      <select id="seriesFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="gameFilter">Game</label>
+      <select id="gameFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="categoryFilter">Category</label>
+      <select id="categoryFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="prSortFilter">Sort by PR</label>
+      <select id="prSortFilter">
+        <option value="default">Default</option>
+        <option value="asc">Shortest To Longest</option>
+        <option value="desc">Longest To Shortest</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="rankSortFilter">Sort by Rank</label>
+      <select id="rankSortFilter">
+        <option value="default">Default</option>
+        <option value="asc">High To Low</option>
+        <option value="desc">Low To High</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="positionSortFilter">Sort by Position</label>
+      <select id="positionSortFilter">
+        <option value="default">Default</option>
+        <option value="asc">High To Low</option>
+        <option value="desc">Low To High</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>&nbsp;</label>
+      <button type="button" id="resetFilters">Reset</button>
+    </div>
+  </div>
+  <pre id="output"></pre>
+  <div id="spinner-container">
+    <div id="spinner" class="spinner"></div>
+  </div>
+  <script src="../scripts/app.js" type="module"></script>
+  <script src="../node_modules/sql.js/dist/sql-wasm.js"></script>
+
+</body>
+</html>

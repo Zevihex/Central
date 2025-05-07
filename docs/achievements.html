@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxanium" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="./news.html">News</a>
+      <a href="./media.html">Media</a>
+      <a href="./speedruns.html">Speedruns</a>
+      <a href="#" class="active">Achievements</a>
+    </nav>
+  </header>
+  <div id="filter-container">
+    <div class="filter-group">
+      <label for="seriesFilter">Series</label>
+      <select id="seriesFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="gameFilter">Game</label>
+      <select id="gameFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="platformFilter">Platform</label>
+      <select id="platformFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="achievementFilter">Sort by Achievement Count</label>
+      <select id="achievementFilter">
+        <option value="default">Default</option>
+        <option value="desc">Highest to Lowest</option>
+        <option value="asc">Lowest To Highest</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="systemFilter">System</label>
+      <select id="systemFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="developerFilter">Developer</label>
+      <select id="developerFilter">
+        <option value="All">All</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>&nbsp;</label>
+      <button type="button" id="resetAchievementFilters">Reset</button>
+    </div>
+  </div>
+  <div id="spinner-container">
+    <div id="spinner" class="spinner"></div>
+  </div>
+  <div id="achievement-output"></div>
+  <script src="../scripts/achievements.js" type="module"></script>
+  <script src="../node_modules/sql.js/dist/sql-wasm.js"></script>
+</body>
+</html>
