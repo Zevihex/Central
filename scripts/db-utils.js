@@ -3,7 +3,7 @@ export async function initDatabase() {
     locateFile: file => "../sql-wasm/sql-wasm.wasm"
   });
 
-  const response = await fetch("../database/Personal_2025_5_5.db");
+  const response = await fetch("../database/Personal.db");
   const buffer = await response.arrayBuffer();
   const db = new SQL.Database(new Uint8Array(buffer));
   return db;
