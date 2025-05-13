@@ -92,6 +92,8 @@ table td {
   color: rgb(170, 202, 231);
   padding: 4px 8px;
   text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 table tbody tr:nth-child(even) {
